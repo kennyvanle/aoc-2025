@@ -10,10 +10,28 @@ class TestDay:
 
     def test_part1_example(self) -> None:
         """Test part1 with example input."""
-        example_input = ""
-        assert part1(example_input) == 0
+        example_input = """L68
+L30
+R48
+L5
+R60
+L55
+L1
+L99
+R14
+L82"""
+        assert part1(example_input) == 3
 
     def test_part2_example(self) -> None:
         """Test part2 with example input."""
-        example_input = ""
-        assert part2(example_input) == 0
+        example_input = """L68
+L30
+R48
+L5
+R60
+L55
+L1
+L99
+R14
+L82"""
+        assert part2(example_input) == 6

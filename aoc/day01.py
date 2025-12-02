@@ -12,8 +12,19 @@ def part1(data: str) -> int:
     Returns:
         The solution to part 1.
     """
-    # TODO: Implement solution
-    return 0
+    curr = 50
+    lines = data.splitlines()
+    count = 0
+    for line in lines:
+        direction = line[0]
+        distance = int(line[1:])
+        if direction == "L":
+            curr = (curr - distance) % 100
+        elif direction == "R":
+            curr = (curr + distance) % 100
+        if curr == 0:
+            count += 1
+    return count
 
 
 def part2(data: str) -> int:
@@ -25,9 +36,20 @@ def part2(data: str) -> int:
     Returns:
         The solution to part 2.
     """
-    # TODO: Implement solution
-    return 0
-
+    curr = 50
+    lines = data.splitlines()
+    count = 0
+    for line in lines:
+        direction = line[0]
+        distance = int(line[1:])
+        for i in range(distance):
+            if direction == "L":
+                curr = (curr - 1) % 100
+            elif direction == "R":
+                curr = (curr + 1) % 100
+            if curr == 0:
+                count += 1
+    return count
 
 if __name__ == "__main__":
     data = read_input(1)
