@@ -12,9 +12,20 @@ def part1(data: str) -> int:
     Returns:
         The solution to part 1.
     """
-    # TODO: Implement solution
-    return 0
+    ranges = data.split(",")
+    sum = 0
+    for r in ranges:
+        start, end = map(str, r.split("-"))
+        for num in range(int(start), int(end) + 1):
+            if isRepeating(str(num)):
+                sum += num
+    return sum
 
+def isRepeating(s: str) -> bool:
+    if len(s) % 2 != 0:
+        return False
+    mid = len(s) // 2
+    return s[:mid] == s[mid:]
 
 def part2(data: str) -> int:
     """Solve part 2 of the puzzle.
