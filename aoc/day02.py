@@ -36,8 +36,22 @@ def part2(data: str) -> int:
     Returns:
         The solution to part 2.
     """
-    # TODO: Implement solution
-    return 0
+    ranges = data.split(",")
+    sum = 0
+    for r in ranges:
+        start, end = map(str, r.split("-"))
+        for num in range(int(start), int(end) + 1):
+            if isAnyRepeating(str(num)):
+                sum += num
+    return sum
+
+def isAnyRepeating(s: str) -> bool:
+    length = len(s)
+    for size in range(1, length // 2 + 1):
+        if length % size == 0:
+            times = length // size
+            if s[:size] * times == s:
+                return True
 
 
 if __name__ == "__main__":
