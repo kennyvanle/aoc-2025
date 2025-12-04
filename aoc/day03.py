@@ -12,8 +12,21 @@ def part1(data: str) -> int:
     Returns:
         The solution to part 1.
     """
-    # TODO: Implement solution
-    return 0
+    maxJoltage = 0
+    lines = data.splitlines()
+    for line in lines:
+        length = len(line)
+        last = line[length - 1]
+        first = line[length - 2]
+        for i in range(length - 3, -1, -1):
+            placeholder = -1
+            if line[i] >= first:
+                placeholder = first
+                first = line[i]
+                if placeholder > last:
+                    last = placeholder
+        maxJoltage += int(f"{first}{last}")
+    return maxJoltage
 
 
 def part2(data: str) -> int:
