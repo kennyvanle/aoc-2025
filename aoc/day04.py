@@ -47,9 +47,26 @@ def part2(data: str) -> int:
     Returns:
         The solution to part 2.
     """
-    # TODO: Implement solution
-    return 43
+    rows = data.splitlines()
+    dataMap = [list(row) for row in rows]
 
+    valid = 0
+    validRolls, updatedMap = getValidRolls(dataMap)
+    while validRolls > 0:
+        valid += validRolls
+        validRolls, updatedMap = getValidRolls(updatedMap)
+        
+    return valid
+
+def getValidRolls(dataMap: list[list[str]]) -> tuple[int, list[list[str]]]:
+    validRolls = 0
+    clone = [list(row) for row in dataMap] 
+    for r in range(len(dataMap)):
+        for c in range(len(dataMap[r])):
+            if dataMap[r][c] == '@' and checkSurroundings(dataMap, r, c):
+                validRolls += 1
+                clone[r][c] = '.'
+    return validRolls, clone
 
 if __name__ == "__main__":
     data = read_input(4)

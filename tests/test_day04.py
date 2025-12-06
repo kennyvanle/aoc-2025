@@ -24,5 +24,14 @@ class TestDay:
 
     def test_part2_example(self) -> None:
         """Test part2 with example input."""
-        example_input = ""
+        example_input = """..@@.@@@@.
+@@@.@.@.@@
+@@@@@.@.@@
+@.@@@@..@.
+@@.@@@@.@@
+.@@@@@@@.@
+.@.@.@.@@@
+@.@@@.@@@@
+.@@@@@@@@.
+@.@.@@@.@."""
         assert part2(example_input) == 43
