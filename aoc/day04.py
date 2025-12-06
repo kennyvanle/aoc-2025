@@ -12,9 +12,31 @@ def part1(data: str) -> int:
     Returns:
         The solution to part 1.
     """
-    # TODO: Implement solution
-    return 0
+    rows = data.splitlines()
+    columns = len(rows[0])
+    dataMap = [list(row) for row in rows]
 
+    valid = 0
+    for row_idx, row in enumerate(rows):
+        for col_idx in range(columns):
+            if dataMap[row_idx][col_idx] == '@':
+                if checkSurroundings(dataMap, row_idx, col_idx):
+                    valid += 1
+    return valid
+
+def checkSurroundings(dataMap, row, col) -> bool:
+    directions = [(-1, -1), (-1, 0), (-1, 1),
+                  (0, -1),          (0, 1),
+                  (1, -1),  (1, 0), (1, 1)]
+    count = 0
+    for dr, dc in directions:
+        r, c = row + dr, col + dc
+        if 0 <= r < len(dataMap) and 0 <= c < len(dataMap[0]):
+            if dataMap[r][c] == '@':
+                count += 1
+                if count >= 4:
+                  return False
+    return True
 
 def part2(data: str) -> int:
     """Solve part 2 of the puzzle.
@@ -26,7 +48,7 @@ def part2(data: str) -> int:
         The solution to part 2.
     """
     # TODO: Implement solution
-    return 0
+    return 43
 
 
 if __name__ == "__main__":
